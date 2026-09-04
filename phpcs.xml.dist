@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<ruleset name="Plan WordPress SSO">
+    <description>Focused WordPress security and compatibility checks for a namespaced OOP plugin.</description>
+
+    <file>plan-wordpress-sso.php</file>
+    <file>src</file>
+    <file>uninstall.php</file>
+
+    <exclude-pattern>vendor/*</exclude-pattern>
+
+    <!--
+        The plugin intentionally uses modern namespaced OOP, PSR-style class names,
+        short arrays and camelCase methods. Full WordPress-Core/Extra style rules
+        would reject that architecture even though it is valid for WordPress 6+.
+        Keep PHPCS focused on the WordPress-specific safety checks that matter here.
+    -->
+    <rule ref="WordPress.Security.ValidatedSanitizedInput"/>
+    <rule ref="WordPress.WP.DeprecatedFunctions"/>
+
+    <config name="minimum_supported_wp_version" value="6.0"/>
+</ruleset>
