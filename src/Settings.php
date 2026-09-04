@@ -67,7 +67,7 @@ final class Settings
                 add_settings_error(
                     self::OPTION_NAME,
                     'invalid_plan_url',
-                    'Adres aplikacji Plan musi być poprawnym adresem HTTP lub HTTPS.'
+                    'Adres aplikacji Plan musi być poprawnym adresem HTTP lub HTTPS bez danych logowania, query string ani fragmentu.'
                 );
                 $planUrl = (string) ($current['plan_url'] ?? '');
             }
@@ -126,8 +126,15 @@ final class Settings
 
         $scheme = strtolower((string) ($parts['scheme'] ?? ''));
         $host = trim((string) ($parts['host'] ?? ''));
+        $hasCredentials = isset($parts['user']) || isset($parts['pass']);
+        $hasQuery = isset($parts['query']);
+        $hasFragment = isset($parts['fragment']);
 
-        return in_array($scheme, ['http', 'https'], true) && $host !== '';
+        return in_array($scheme, ['http', 'https'], true)
+            && $host !== ''
+            && !$hasCredentials
+            && !$hasQuery
+            && !$hasFragment;
     }
 
     public static function renderPage(): void
