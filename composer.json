@@ -1,0 +1,24 @@
+{
+  "name": "chmajster/plan-wordpress-sso",
+  "description": "Samodzielny plugin WordPress SSO dla aplikacji Plan.",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": ">=8.0"
+  },
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+    "phpunit/phpunit": "^9.6 || ^10.5 || ^11.0",
+    "wp-coding-standards/wpcs": "^3.0"
+  },
+  "scripts": {
+    "test": "phpunit",
+    "phpcs": "phpcs"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    },
+    "sort-packages": true
+  }
+}

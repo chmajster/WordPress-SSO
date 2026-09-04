@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset name="Plan WordPress SSO">
+    <description>WordPress Coding Standards for Plan WordPress SSO.</description>
+
+    <file>plan-wordpress-sso.php</file>
+    <file>src</file>
+    <file>uninstall.php</file>
+
+    <exclude-pattern>vendor/*</exclude-pattern>
+
+    <rule ref="WordPress-Core"/>
+    <rule ref="WordPress-Extra"/>
+    <rule ref="WordPress-Docs"/>
+
+    <config name="minimum_supported_wp_version" value="6.0"/>
+</ruleset>
